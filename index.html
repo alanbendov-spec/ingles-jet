@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+  <head><meta name="robots" content="noindex">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>English · ח׳ · Class 9 · Yesterday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #efebe0;
+        --white: #fdfcf9;
+        --ink: #1d2a44;
+        --navy: #26375b;
+        --gold: #b8923c;
+        --line: #d8d2c2;
+        --green: #17613d;
+        --dock: 76px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Rubik, Arial, sans-serif;
+      }
+      body:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        opacity: 0.35;
+        pointer-events: none;
+        background-image: radial-gradient(#b9af94 1px, transparent 1px);
+        background-size: 14px 14px;
+      }
+      #deck {
+        position: fixed;
+        inset: 0 0 var(--dock);
+      }
+      .slide {
+        position: absolute;
+        inset: 0;
+        padding: 2vh 4vw;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+      }
+      .slide.on {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .inner {
+        width: min(1500px, 100%);
+        max-height: 100%;
+        display: grid;
+        gap: clamp(8px, 1.25vh, 18px);
+        align-content: center;
+      }
+      .eyebrow {
+        color: var(--gold);
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+      }
+      .title {
+        margin: 0;
+        color: var(--navy);
+        font:
+          700 clamp(28px, min(4vw, 6.2vh), 60px)/1.05 Rubik,
+          Arial;
+      }
+      .copy {
+        background: #fdfcf9eb;
+        border: 1px solid var(--line);
+        border-left: 7px solid var(--gold);
+        border-radius: 12px;
+        padding: 0.9vh 1.6vw;
+      }
+      .he {
+        font:
+          700 clamp(19px, 2vw, 31px)/1.2 Rubik,
+          Arial;
+        direction: rtl;
+        text-align: right;
+      }
+      .en {
+        font-size: clamp(20px, 1.8vw, 32px);
+        font-weight: 700;
+        margin-top: 4px;
+      }
+      .voicebtn {
+        display: block;
+        margin: 6px 0 0 auto;
+        border: 0;
+        border-radius: 999px;
+        background: var(--navy);
+        color: #fff;
+        font:
+          700 clamp(14px, 1.2vw, 20px) Rubik,
+          Arial;
+        padding: 6px 16px;
+        cursor: pointer;
+      }
+      .hero,
+      .sentence {
+        background: var(--white);
+        border: 2px solid var(--gold);
+        border-radius: 15px;
+        padding: 18px;
+        text-align: center;
+        color: var(--navy);
+        font:
+          700 clamp(31px, 4.1vw, 66px)/1.18 Rubik,
+          Arial;
+      }
+      .gold {
+        color: #8b671e;
+      }
+      .green {
+        color: var(--green);
+      }
+      .two,
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .grid.four {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .panel,
+      .card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: clamp(10px, 1.4vw, 20px);
+        text-align: center;
+      }
+      .panel h3 {
+        margin: 0 0 8px;
+        color: var(--navy);
+        font-size: clamp(22px, 2.25vw, 37px);
+      }
+      .panel p,
+      .card {
+        font-size: clamp(18px, 1.8vw, 30px);
+        line-height: 1.38;
+        margin: 0.25em 0;
+      }
+      .card b {
+        display: block;
+        font-size: clamp(23px, 2.3vw, 39px);
+        color: var(--navy);
+      }
+      .formula {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 14px;
+        align-items: center;
+        text-align: center;
+      }
+      .word {
+        background: var(--navy);
+        color: #fff;
+        border-radius: 13px;
+        padding: 18px;
+        font-size: clamp(22px, 2.4vw, 40px);
+        font-weight: 700;
+      }
+      .plus {
+        font-size: 34px;
+        color: var(--gold);
+        font-weight: 700;
+      }
+      .examples {
+        display: grid;
+        gap: 10px;
+      }
+      .example {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px 18px;
+        text-align: center;
+        font-size: clamp(21px, 2.1vw, 35px);
+        font-weight: 600;
+      }
+      .bank {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .bank div {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-top: 8px solid var(--gold);
+        border-radius: 12px;
+        padding: 13px;
+        text-align: center;
+        font-size: clamp(20px, 2vw, 34px);
+        font-weight: 700;
+      }
+      .reading {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 18px 24px;
+        font-size: clamp(19px, 1.65vw, 28px);
+        line-height: 1.48;
+      }
+      .questions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 16px;
+      }
+      .questions div,
+      .write div {
+        background: var(--white);
+        border-bottom: 3px solid var(--gold);
+        border-radius: 9px;
+        padding: 10px 14px;
+        font-size: clamp(17px, 1.45vw, 24px);
+        font-weight: 600;
+      }
+      .write {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .write div:last-child {
+        grid-column: 1/-1;
+      }
+      .button {
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 18px;
+        background: var(--navy);
+        color: #fff;
+        font:
+          700 18px Rubik,
+          Arial;
+        cursor: pointer;
+      }
+      .answer {
+        display: none;
+        background: #edf7ed;
+        border: 1px solid #77aa80;
+        border-radius: 12px;
+        padding: 10px;
+        text-align: center;
+        color: var(--green);
+        font-size: clamp(21px, 2.3vw, 40px);
+        font-weight: 700;
+      }
+      .answer.show {
+        display: block;
+      }
+      .exit {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .exit .card b {
+        color: var(--gold);
+      }
+      .video-wrap { width:min(980px,100%); margin:auto; aspect-ratio:16/9; background:#111; border:3px solid var(--gold); border-radius:14px; overflow:hidden; }
+      .video-wrap iframe, .video-wrap video { width:100%; height:100%; border:0; display:block; }
+      .backup { margin:7px 0 0; text-align:center; font-size:16px; font-weight:700; }
+      .backup a { color:var(--navy); }
+      #progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 5px;
+        background: var(--gold);
+        z-index: 5;
+        transition: 0.25s;
+      }
+      #bar {
+        height: var(--dock);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        background: #efebe0fa;
+        border-top: 1px solid var(--line);
+        padding: 10px 4vw;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .round {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid var(--navy);
+        background: transparent;
+        font-weight: 800;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .round:hover {
+        background: var(--navy);
+        color: #fff;
+      }
+      #count {
+        font-size: 12px;
+        font-weight: 700;
+        color: #5c7186;
+        min-width: 52px;
+      }
+      #timer {
+        margin-left: auto;
+        min-width: 100px;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--navy);
+        cursor: pointer;
+      }
+      @media (max-width: 850px) {
+        .two,
+        .grid,
+        .grid.four,
+        .formula,
+        .questions,
+        .write,
+        .exit,
+        .bank {
+          grid-template-columns: 1fr;
+        }
+        .write div:last-child {
+          grid-column: auto;
+        }
+        #timer {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress"></div>
+    <main id="deck"></main>
+    <nav id="bar">
+      <button class="round" id="prev">←</button
+      ><button class="round" id="next">→</button><span id="count"></span>
+      <div id="timer" title="T: pause / restart">—</div>
+      <button class="round" id="full">⛶</button>
+    </nav>
+    <script>
+      const S = [],
+        add = (title, he, en, content = "", sec = 0, voice = "") =>
+          S.push({ title, he, en, content, sec, voice });
+      const body = (s) =>
+        `<div class="inner"><div class="eyebrow">ENGLISH · ח׳ · CLASS 9 · SUNDAY 18 OCT</div><h1 class="title">${s.title}</h1><div class="copy"><div class="he">${s.he}</div><div class="en">${s.en}</div></div><div>${s.content}</div></div>`;
+      const reveal = (id, answers) => {
+        const list = Array.isArray(answers) ? answers : answers.split(" · ");
+        return `<div class="reveal" id="r${id}" style="text-align:center"><button class="button" onclick="showNext(this.parentElement)">Show answer</button> <button class="button" onclick="showAll(this.parentElement)">Show all</button>${list.map(a => `<div class="answer">✓ ${a}</div>`).join("")}</div>`;
+      };
+      const video = (id, local, label) =>
+        `<div class="video-wrap">${navigator.onLine ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${label}" allowfullscreen></iframe>` : `<video controls preload="metadata"><source src="videos/${local}" type="video/mp4"></video>`}</div><p class="backup">Offline copy: <code>videos/${local}</code> · <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">YouTube backup link</a></p>`;
+      add(
+        "Before Part 1 · Yesterday",
+        "היום נדבר על אתמול ועל שבת שעברה. בסוף כל אחד יכתוב חמש עובדות פשוטות.",
+        "Today we talk about yesterday and last Shabbat. At the end, everyone writes five simple facts.",
+        `<div class="hero">Yesterday I <span class="gold">played</span> soccer.<br>Last Shabbat I <span class="gold">was</span> at home.</div>`,
+        120,
+        "s01",
+      );
+      add(
+        "Worksheet · Part 1 — Quick review",
+        "עובדים לבד ובשקט. משלימים בדף: Do או Does, מילת תדירות ושעה.",
+        "Work alone and silently. Complete: Do or Does, a frequency word, and a time.",
+        `<div class="questions"><div>1. Do / Does you study at home?</div><div>2. I always / never read at night.</div><div>3. I start school at __________.</div><div>4. Does he play soccer?</div></div>${reveal(1, ["Do", "Choose always or never for yourself", "Write your own time", "Answer about him"])}`,
+        180,
+        "s02",
+      );
+      add(
+        "Before Part 2 · Time words",
+        "כשאומרים yesterday, last Shabbat או last week — מדברים על העבר.",
+        "When we say yesterday, last Shabbat, or last week — we talk about the past.",
+        `<div class="grid"><div class="card"><b>yesterday</b><span class="he">אתמול</span></div><div class="card"><b>last Shabbat</b><span class="he">שבת שעברה</span></div><div class="card"><b>last week</b><span class="he">שבוע שעבר</span></div><div class="card"><b>past</b><span class="he">עבר</span></div></div>`,
+        180,
+        "s03",
+      );
+      add(
+        "Before Part 2 · Was / were",
+        "משתמשים ב־was עם I, he, she, it. משתמשים ב־were עם you, we, they.",
+        "Use was with I, he, she, it. Use were with you, we, they.",
+        `<div class="formula"><div class="word">I / he / she<br><span class="gold">was</span></div><div class="plus">·</div><div class="word">you / we / they<br><span class="gold">were</span></div></div><div class="examples"><div class="example">I <span class="gold">was</span> at home yesterday.</div><div class="example">We <span class="gold">were</span> at the game.</div></div>`,
+        180,
+        "s04",
+      );
+      add(
+        "Before Part 2 · Video: was / were",
+        "צופים פעם אחת. שומעים was ו־were במשפטים אמיתיים.",
+        "Watch once. Listen for was and were in real sentences.",
+        video("H4govUgZPEk", "was-were-H4govUgZPEk.mp4", "Past Simple Be: was/were"),
+        180,
+        "s17",
+      );
+      add(
+        "Before Part 2 · Video questions",
+        "עונים בעל פה. לוחצים על הכפתור רק אחרי שעניתם.",
+        "Answer aloud. Click only after you answer.",
+        `<div class="questions"><div>1. Where were they?</div><div>2. Was it hot or cold?</div><div>3. Were the sailing boats fun?</div><div>4. Who was completely wet?</div></div>${reveal(18, "At the lake · It was hot (then it was not hot / it was cold) · Yes, they were fun · Hammy")}`,
+        90,
+        "s18",
+      );
+      add(
+        "Worksheet · Part 2 — Was or were?",
+        "משלימים שש משפטים בדף. אחר כך בודקים ביחד.",
+        "Complete six sentences on your sheet. Then check together.",
+        `<div class="questions"><div>1. I was / were tired yesterday.</div><div>2. We was / were at home.</div><div>3. My father was / were happy.</div><div>4. You was / were at school.</div><div>5. My friends was / were here.</div><div>6. It was / were Shabbat.</div></div>${reveal(5, ["1. was", "2. were", "3. was", "4. were", "5. were", "6. was"])}`,
+        180,
+        "s05",
+      );
+      add(
+        "Before Part 3 · Regular verbs",
+        "בפועל רגיל מוסיפים בדרך כלל ed. אומרים את המילים יחד.",
+        "For a regular verb, we usually add ed. Say the words together.",
+        `<div class="bank"><div>play → __________</div><div>walk → __________</div><div>watch → __________</div><div>help → __________</div></div>${reveal(6, ["play → played", "walk → walked", "watch → watched", "help → helped"])}`,
+        150,
+        "s06",
+      );
+      add(
+        "Before Part 3 · Video: regular verbs",
+        "צופים. העיקר: בדרך כלל מוסיפים ed. שמים לב גם ל־y ול־stop.",
+        "Watch. The main idea: usually add ed. Notice y and stop too.",
+        video("QlZXd-m6Pdw", "regular-ed-QlZXd-m6Pdw.mp4", "Regular verbs in past simple"),
+        240,
+        "s19",
+      );
+      add(
+        "Before Part 3 · Video questions",
+        "עונים בזוגות. לוחצים על הכפתור רק אחרי שעניתם.",
+        "Answer with a partner. Click only after you answer.",
+        `<div class="questions"><div>1. What do we usually add to a regular past verb?</div><div>2. What happens to <i>y</i> in try → tried?</div><div>3. What happens in stop → stopped?</div><div>4. Do we double the last consonant after <i>x</i>?</div></div>${reveal(20, "Add -ed · y changes to i, then add -ed · Double the last consonant, then add -ed · No, we do not")}`,
+        90,
+        "s20",
+      );
+      add(
+        "Before Part 3 · Practice regular verbs",
+        "משלימים את צורות העבר בדף. קוראים בקול ביחד.",
+        "Complete the past forms on your sheet. Read them aloud together.",
+        `<div class="examples"><div class="example">Regular verbs usually add <span class="gold">-ed</span>.</div></div>`,
+        90,
+        "s07",
+      );
+      add(
+        "Before Part 3 · Four special verbs",
+        "ארבעה פעלים חשובים משתנים. זוכרים אותם בעל פה.",
+        "Four important verbs change. Learn them by heart.",
+        `<div class="bank"><div>go → __________</div><div>have → __________</div><div>eat → __________</div><div>see → __________</div></div>${reveal(8, ["go → went", "have → had", "eat → ate", "see → saw"])}`,
+        120,
+        "s08",
+      );
+      add(
+        "Before Part 3 · Say it, write it",
+        "אומרים את ארבעת המשפטים ואז משלימים חלק 3 בדף.",
+        "Say the four sentences, then complete Part 3 on your sheet.",
+        `<div class="examples"><div class="example">Say the past verbs together, then complete the worksheet.</div></div>`,
+        150,
+        "s09",
+      );
+      add(
+        "Worksheet · Part 3 — Past verbs",
+        "בוחרים את הפועל הנכון וכותבים משפט שלם. עובדים לבד, ואז מתקנים ביחד.",
+        "Choose the right verb and write a full sentence. Work alone, then check together.",
+        `<div class="bank"><div>play → ______</div><div>walk → ______</div><div>watch → ______</div><div>help → ______</div><div>go → ______</div><div>have → ______</div><div>eat → ______</div><div>see → ______</div></div><div class="questions"><div>1. Yesterday I played / went / ate soccer.</div><div>2. Last Shabbat we was / were / saw at home.</div><div>3. I visited / had / were my grandmother.</div><div>4. My brother was / were / played tired.</div></div>${reveal(10, ["play → played", "walk → walked", "watch → watched", "help → helped", "go → went", "have → had", "eat → ate", "see → saw", "1. played", "2. were", "3. visited", "4. was"])}`,
+        360,
+        "s10",
+      );
+      add(
+        "Worksheet · Part 4 — Reading: Eli's last Shabbat",
+        "קוראים בשקט את הקטע בחלק 5. מסמנים was/were ופעלי עבר.",
+        "Read Part 4 silently. Underline was/were and past verbs.",
+        `<div class="reading"><b>Eli’s last Shabbat</b><br>Last Shabbat, Eli was at home with his family. On Friday night, they ate dinner together. Eli had soup and challah. On Shabbat morning, he walked to the synagogue with his father. After lunch, Eli played soccer with his friends. In the evening, they watched a movie at home. Eli was happy, but his brother was tired.</div>`,
+        300,
+        "s11",
+      );
+      add(
+        "Before Part 4 · Video: story in the past",
+        "צופים בסיפור. חפשו את המקום, העצם והמים.",
+        "Watch the story. Listen for the place, the bone, and the water.",
+        video("Oq-vK6nyPDY", "story-Oq-vK6nyPDY.mp4", "The Dog and his Bone"),
+        180,
+        "s21",
+      );
+      add(
+        "Before Part 4 · Video questions",
+        "עונים בעל פה על הסיפור. לוחצים על הכפתור רק אחרי שעניתם.",
+        "Answer aloud about the story. Click only after you answer.",
+        `<div class="questions"><div>1. Where does the dog see a bone?</div><div>2. What does he see in the water?</div><div>3. What happens when he barks? <small>(about 1:45)</small></div><div>4. How is the dog at the end?</div></div>${reveal(22, "In a trash can · Another dog with a bone (his reflection) · His bone drops and sinks to the bottom · Wet and cold, with no bone")}`,
+        90,
+        "s22",
+      );
+      add(
+        "Worksheet · Part 4 — Reading questions",
+        "עונים על חמש השאלות בדף. כותבים מילים מהקטע.",
+        "Answer the five questions on your sheet. Use words from the text.",
+        `<div class="questions"><div>1. Where was Eli?</div><div>2. What did he eat?</div><div>3. Who did he walk with?</div><div>4. What did he do after lunch?</div><div>5. Was his brother tired?</div></div>${reveal(12, ["1. At home with his family", "2. Soup and challah", "3. With his father", "4. He played soccer with his friends", "5. Yes, he was"])}`,
+        300,
+        "s12",
+      );
+      add(
+        "Worksheet · Part 5 — Five true sentences",
+        "כותבים חמש עובדות אמיתיות: yesterday או last Shabbat. משתמשים בבנק המילים.",
+        "Write five true facts: yesterday or last Shabbat.",
+        `<div class="write"><div>1. Yesterday I __________.</div><div>2. Yesterday I __________.</div><div>3. Last Shabbat I __________.</div><div>4. Last Shabbat we __________.</div><div>5. I was / We were __________.</div></div>${reveal(13, ["Write a true sentence", "Write a true sentence", "Write a true sentence", "Write a true sentence", "Write a true sentence"])}`,
+        300,
+        "s13",
+      );
+      add(
+        "Worksheet · Part 5 — Five true sentences",
+        "כותבים לבד. כל משפט מתחיל בזמן: Yesterday או Last Shabbat. לפחות משפט אחד עם was או were.",
+        "Write alone. Start each sentence with Yesterday or Last Shabbat. Use was or were in at least one sentence.",
+        `<div class="write"><div>1. Yesterday I __________.</div><div>2. Yesterday I __________.</div><div>3. Last Shabbat I __________.</div><div>4. Last Shabbat we __________.</div><div>5. I was / We were __________.</div></div>${reveal(14, ["Your own true sentence", "Your own true sentence", "Your own true sentence", "Your own true sentence", "Your own true sentence"])}`,
+        360,
+        "s14",
+      );
+      add(
+        "Before Exit ticket · Check your work",
+        "בודקים: זמן בעבר, פועל נכון, אות גדולה ונקודה. מתקנים משפט אחד לפחות.",
+        "Check: past time, correct verb, capital letter, and full stop. Fix at least one sentence.",
+        `<div class="grid four"><div class="card"><b>Yesterday?</b>past</div><div class="card"><b>verb?</b>correct</div><div class="card"><b>Capital</b>letter</div><div class="card"><b>Full stop</b>.</div></div>`,
+        420,
+        "s15",
+      );
+      add(
+        "Exit ticket",
+        "משלימים לבד, כותבים שם ומוסרים את הדף.",
+        "Complete it alone, write your name, and hand in the sheet.",
+        `<div class="exit"><div class="card"><b>1</b>Yesterday I ________.</div><div class="card"><b>2</b>We were ________.</div></div><div class="hero">ציון __/10</div>${reveal(16, ["Your own sentence", "Your own sentence"])}`,
+        540,
+        "s16",
+      );
+      const slideOrder = [
+        "Before Part 1 · Yesterday", "Worksheet · Part 1", "Before Part 2 · Time", "Before Part 2 · Was", "Before Part 2 · Video: was", "Before Part 2 · Video questions", "Worksheet · Part 2",
+        "Before Part 3 · Regular", "Before Part 3 · Video: regular", "Before Part 3 · Video questions", "Before Part 3 · Practice", "Before Part 3 · Four", "Before Part 3 · Say", "Worksheet · Part 3",
+        "Before Part 4 · Video: story", "Before Part 4 · Video questions", "Worksheet · Part 4 — Reading:", "Worksheet · Part 4 — Reading questions",
+        "Worksheet · Part 5", "Before Exit ticket", "Exit ticket"
+      ];
+      S.sort((a, b) => slideOrder.findIndex(x => a.title.startsWith(x)) - slideOrder.findIndex(x => b.title.startsWith(x)));
+      const au = new Audio(),
+        deck = document.querySelector("#deck");
+      S.forEach((s, i) => {
+        const el = document.createElement("section");
+        el.className = "slide";
+        el.innerHTML = body(s);
+        deck.append(el);
+        s.el = el;
+        el.querySelector(".copy").insertAdjacentHTML(
+          "beforeend",
+          `<button class="voicebtn" onclick="playVoice(${i})">🔊 עברית</button>`,
+        );
+      });
+      function showNext(box) {
+        const next = [...box.querySelectorAll(".answer")].find(a => !a.classList.contains("show"));
+        if (next) next.classList.add("show");
+      }
+      function showAll(box) {
+        box.querySelectorAll(".answer").forEach(a => a.classList.add("show"));
+      }
+      function revealCurrent() {
+        const box = S[cur]?.el.querySelector(".reveal");
+        const hidden = box && box.querySelector(".answer:not(.show)");
+        if (hidden) { showNext(box); return true; }
+        return false;
+      }
+      function playVoice(i) {
+        au.pause();
+        const v = S[i].voice;
+        au.src = "audio/" + v + ".mp3";
+        au.currentTime = 0;
+        au.play().catch(() => alert(S[i].he));
+      }
+      let cur = -1,
+        tick,
+        t = { left: 0, total: 0 };
+      const fmt = (n) =>
+        `${Math.floor(n / 60)}:${String(n % 60).padStart(2, "0")}`;
+      function paint() {
+        timer.textContent = t.total ? fmt(t.left) : "—";
+      }
+      function startTimer(sec) {
+        clearInterval(tick);
+        t = { left: sec, total: sec };
+        paint();
+        if (sec)
+          tick = setInterval(() => {
+            if (t.left) {
+              t.left--;
+              paint();
+            } else clearInterval(tick);
+          }, 1000);
+      }
+      function go(i) {
+        i = Math.max(0, Math.min(S.length - 1, i));
+        if (i === cur) return;
+        if (cur >= 0) S[cur].el.classList.remove("on");
+        au.pause();
+        cur = i;
+        S[cur].el.classList.add("on");
+        location.hash = cur + 1;
+        count.textContent = `${cur + 1} / ${S.length}`;
+        progress.style.width = `${((cur + 1) / S.length) * 100}%`;
+        startTimer(S[cur].sec);
+      }
+      prev.onclick = () => go(cur - 1);
+      next.onclick = () => go(cur + 1);
+      full.onclick = () =>
+        document.fullscreenElement
+          ? document.exitFullscreen()
+          : document.documentElement.requestFullscreen();
+      timer.onclick = () =>
+        t.total && (t.left ? (t.left = 0) : (t.left = t.total), paint());
+      document.addEventListener("keydown", (e) => {
+        if ((e.key === " " || e.key === "a" || e.key === "A") && revealCurrent()) { e.preventDefault(); return; }
+        if (["ArrowRight", "PageDown", " "].includes(e.key)) go(cur + 1);
+        if (["ArrowLeft", "PageUp"].includes(e.key)) go(cur - 1);
+        if (e.key === "t" || e.key === "T") timer.click();
+        if (e.key === "f" || e.key === "F") full.click();
+      });
+      go(Math.max(0, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+    </script>
+  </body>
+</html>
