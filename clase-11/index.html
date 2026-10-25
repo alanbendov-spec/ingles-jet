@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><link rel="icon" href="data:,"><title>English · ח׳ · Yesterday at the Park</title><style>
+:root{--navy:#26375b;--gold:#b8923c;--paper:#f1ede2;--white:#fffdf8;--line:#d8d2c2;--bar:92px;--green:#17613d}
+*{box-sizing:border-box}
+body{margin:0;overflow:hidden;background:var(--paper);color:var(--navy);font-family:Arial,"Rubik",sans-serif}
+#stage{position:fixed;inset:0 0 var(--bar)}
+.slide{position:absolute;inset:0;padding:2.5vh 5vw;display:grid;place-items:center;text-align:center}
+.inner{width:min(1280px,100%);display:grid;gap:12px;justify-items:center}
+.eyebrow{color:#927020;font-weight:800;font-size:clamp(14px,1.4vw,20px);letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(30px,8vh,78px);margin:0}
+h2{font-size:clamp(28px,4vw,56px);margin:0}
+.he{direction:rtl;font-size:clamp(18px,2vw,30px);font-weight:700;color:#4a5a7d}
+.big{font-size:clamp(44px,8vw,120px);font-weight:900;line-height:1.1}
+.q{font-size:clamp(30px,4.6vw,66px);font-weight:900;line-height:1.2}
+.sub{font-size:clamp(20px,2.4vw,34px);font-weight:700}
+.agenda{list-style:none;margin:6px 0 0;padding:0;width:min(780px,100%);text-align:left;counter-reset:a}
+.agenda li{display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--line);border-left:8px solid var(--gold);border-radius:10px;padding:4px 16px;margin-bottom:5px;font-size:clamp(15px,2.9vh,26px);font-weight:800;counter-increment:a}
+.agenda li:before{content:counter(a);width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.8em;flex:none}
+.agenda .m{margin-left:auto;color:#8b671e;font-size:.85em}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;width:100%}
+.opt{background:var(--white);border:2px solid var(--line);border-radius:14px;padding:16px;font-size:clamp(22px,2.8vw,42px);font-weight:800;text-align:left}
+.opt b{color:#8b671e;margin-right:10px}
+.opt.ok{background:#e3f4e8;border-color:var(--green);color:var(--green)}
+.ans{min-height:1.4em;font-size:clamp(26px,3.4vw,50px);font-weight:900;color:var(--green)}
+.card{background:var(--white);border:2px solid var(--gold);border-radius:18px;padding:26px 34px;width:100%}
+.btn{border:0;border-radius:10px;background:var(--navy);color:#fff;padding:12px 20px;font-weight:800;font-size:clamp(16px,1.6vw,22px);cursor:pointer}
+.btn.gold{background:var(--gold)}
+.btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:100%}
+.topic{background:var(--navy);color:#fff;border-radius:12px;padding:14px 6px;font-weight:900;font-size:clamp(16px,1.9vw,28px)}
+.cell{background:var(--white);border:2px solid var(--gold);border-radius:12px;padding:20px 6px;font-weight:900;font-size:clamp(26px,3.4vw,50px);color:#8b671e;cursor:pointer}
+.cell.used{opacity:.25;cursor:default;text-decoration:line-through}
+#modal{position:fixed;inset:0 0 var(--bar);background:var(--paper);display:none;place-items:center;padding:3vh 5vw;z-index:5}
+#modal.on{display:grid}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.video-layout{display:grid;grid-template-columns:minmax(0,3fr) minmax(180px,1fr);gap:18px;width:min(1180px,94vw);align-items:center}
+.video{width:100%;max-height:50vh;border:4px solid var(--gold);border-radius:16px;background:#000}
+.worksheet-thumb{margin:0;background:var(--white);border:2px solid var(--navy);border-radius:12px;padding:8px}
+.worksheet-thumb img{display:block;width:100%;max-height:43vh;object-fit:contain}
+.worksheet-thumb figcaption{font-size:clamp(14px,1.5vw,20px);font-weight:900;margin-top:6px}
+@media(max-width:760px){.video-layout{grid-template-columns:1fr}.worksheet-thumb{display:none}}
+#bar{position:fixed;left:0;right:0;bottom:0;height:var(--bar);background:#26375b;color:#fff;display:flex;align-items:center;gap:10px;padding:8px 2vw;z-index:9}
+.team{flex:1;background:#34497a;border-radius:12px;padding:6px 10px;display:flex;align-items:center;gap:8px;min-width:0}
+.team.cur{outline:4px solid var(--gold)}
+.tn{flex:1;font-weight:800;font-size:clamp(14px,1.4vw,20px);min-width:0;overflow:hidden;white-space:nowrap;outline:none}
+.ts{font-size:clamp(28px,3.4vw,50px);font-weight:900;color:#f4d98d;min-width:2.1ch;text-align:right}
+.pm{border:0;background:#4b6296;color:#fff;border-radius:8px;width:34px;height:34px;font-size:20px;font-weight:900;cursor:pointer}
+.nav{display:flex;flex-direction:column;gap:5px;align-items:center}
+.nav button{border:1px solid #fff;background:transparent;color:#fff;border-radius:8px;padding:3px 10px;font-weight:800;cursor:pointer}
+#timer{font-size:28px;font-weight:900;color:#f4d98d;cursor:pointer;min-width:3ch;text-align:center}
+#prog{position:fixed;top:0;left:0;height:5px;background:var(--gold);z-index:10}
+.audio{font-size:18px}
+.audio::before{content:'🔊 '}
+
+</style></head><body><div id="prog"></div><div id="stage"></div><div id="modal"><div class="inner" id="mbody"></div></div><div id="bar"></div><script>
+const TOPICS=["Story","Verbs","Questions","Negatives","Word order"],LV=[10,20,30];
+const QS=[[["Where did Sam go?",["the park","school","the beach","the shop"],0],["What did Sam take?",["a ball","a book","a bike","a dog"],0],["Why did Sam go home?",["it got dark","he was hungry","it rained","he was tired"],0]],[["The past of run is…",["runned","ran","run","running"],1],["The past of see is…",["seed","seen","saw","sees"],2],["The past of take is…",["took","taked","taken","takes"],0]],[["Choose the correct question.",["Did Sam played?","Did Sam play?","Did Sam plays?","Does Sam played?"],1],["Choose the correct answer.",["Yes, he did.","Yes, he played.","Yes, he does.","Yes, he went."],0],["What did Sam do?",["He play football.","He played football.","He did played football.","He playing football."],1]],[["Choose the correct sentence.",["Sam didn't went home.","Sam didn't go home.","Sam don't go home.","Sam not went home."],1],["Choose the correct sentence.",["He didn't saw Ben.","He didn't see Ben.","He didn't sees Ben.","He not see Ben."],1],["Finish: They didn't ___ football.",["played","plays","play","playing"],2]],[["Put the words in order.",["Sam played football yesterday.","Yesterday Sam football played.","Football Sam yesterday played.","Played Sam football yesterday."],0],["Choose the correct sentence.",["Ben didn't come to the park.","Ben come didn't to the park.","Didn't Ben come park the.","Ben didn't came to the park."],0],["Choose the correct question.",["Did you play yesterday?","You did play yesterday?","Did played you yesterday?","Do you played yesterday?"],0]]];
+const REG=[["walk","walked"],["play","played"],["watch","watched"],["clean","cleaned"],["visit","visited"],["help","helped"]];
+const QMAKE=[["Sam played football.","Did Sam play football?","Did Sam played football?","Does Sam play football?"],["Sam went home.","Did Sam go home?","Did Sam went home?","Does Sam went home?"],["They watched a movie.","Did they watch a movie?","Did they watched a movie?","Do they watched a movie?"],["Ben saw Sam.","Did Ben see Sam?","Did Ben saw Sam?","Does Ben saw Sam?"]].map((v,i)=>({q:v[0],o:[v[1],v[2],v[3]],c:0,a:v[1]}
+));
+const DIDNT=[["Sam didn't went home.","❌ Sam didn't go home."],["Ben didn't come to the park.","✅ Correct"],["They didn't played football.","❌ They didn't play football."],["I didn't see the video.","✅ Correct"],["We didn't took the bus.","❌ We didn't take the bus."],["He didn't eat breakfast.","✅ Correct"]];
+const SCRAMBLE=[["Sam / the park / went / to / yesterday.","Sam went to the park yesterday."],["didn't / Ben / come / .","Ben didn't come."],["you / Did / play / football / ?","Did you play football?"],["football / Sam / played / .","Sam played football."]];
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');let teams=[{n:'Team 1',s:0}
+,{n:'Team 2',s:0}
+,{n:'Team 3',s:0}
+,{n:'Team 4',s:0}
+];try{const x=JSON.parse(localStorage.getItem('ch11teams')||'null');if(x&&x.length===4)teams=x}
+catch(e){}
+let cur=0,used={}
+,idx=0,item=0,shown=false,tleft=0,tint=null,mq=null,mshow=false;const save=()=>localStorage.setItem('ch11teams',JSON.stringify(teams));
+const S=[{t:'cover'}
+,{t:'video',n:1,file:'assets/video-1.mp4',title:'VIDEO 1 → Worksheet questions 1–3',he:'צפו בסרטון וענו על שאלות 1–3 בדף.',thumb:'assets/worksheet-video-1.png'}
+,{t:'teach',label:'Story',title:'The story',he:'קוראים יחד מהמסך',rows:[['Yesterday, Sam went to the park.','He took a ball.'],['He played football.','Ben did not come.']],note:'Go to the worksheet: Questions 1–3'}
+,{t:'seq',game:'GAME 1 · Quick Past ⚡',rule:'I say a verb. First team to say the past form: +10.',items:REG.map(v=>({q:v[0]+' →',a:v[1]}
+)),big:true}
+,{t:'teach',label:'Grammar · Questions',title:'Past questions',he:'שאלה: Did + פועל בצורת בסיס',rows:[['Did Sam go to the park?','Did he play football?'],['Yes, he did.','No, he didn’t.']],note:'Did + go  ✘ Did + went'}
+,{t:'seq',game:'GAME 2 · Make the Question ❓',rule:'Choose A, B or C. Right answer: +10.',items:QMAKE}
+,{t:'video',n:2,file:'assets/video-2.mp4',title:'VIDEO 2 → Worksheet questions 4–6',he:'צפו בסרטון וענו על שאלות 4–6 בדף.',thumb:'assets/worksheet-video-2.png'}
+,{t:'teach',label:'Grammar · Negatives',title:'Negative: didn’t',he:'שלילה: didn’t + פועל בצורת בסיס',rows:[['Ben came to the park.','Ben didn’t come to the park.'],['Sam went home.','Sam didn’t go home.']],note:'didn’t + base verb  ✘ didn’t went'}
+,{t:'seq',game:'GAME 3 · Right or Wrong? ✅❌',rule:'Correct or wrong? If wrong, say the fix. Right: +10.',items:DIDNT.map(v=>({q:v[0],a:v[1]}
+))}
+,{t:'teach',label:'Grammar · Word order',title:'Word order',he:'סדר מילים במשפט',rows:[['Sam','played football','yesterday.'],['Ben','didn’t come','to the park.']],note:'Who + verb + extra information'}
+,{t:'seq',game:'GAME 4 · Build the Sentence 🧩',rule:'Put the words in order. First correct sentence: +20.',items:SCRAMBLE.map(v=>({q:v[0],a:v[1]}
+))}
+,{t:'board',game:'FINAL GAME · Topic Trivia 🎯',rule:'Pick a topic and a level: Easy 10 · Medium 20 · Hard 30.'}
+,{t:'end'}
+];
+function audio(t){const a=new Audio('assets/'+t);a.play()}
+function optsHtml(it){return '<div class="opts">'+it.o.map((o,i)=>'<div class="opt '+(shown&&i===it.c?'ok':'')+'"><b>'+('ABC'[i])+'</b>'+esc(o)+'</div>').join('')+'</div>'}
+function render(){const s=S[idx];let h='',gh=s.game?'<div class="eyebrow">'+s.game+'</div><div class="card sub" style="padding:10px 22px;font-size:clamp(16px,2vh,26px)">'+s.rule+'</div>':'';document.getElementById('prog').style.width=(idx/(S.length-1)*100)+'%';if(s.t==='cover')h='<div class="inner"><div class="eyebrow">English class</div><h1>Yesterday at the Park</h1><div class="sub">Rav Mordechai · Sunday 25 October 2026</div><div class="eyebrow">Today’s agenda</div><ol class="agenda"><li>Video 1 + worksheet<span class="m">12 min</span></li><li>Story + Quick Past ⚡<span class="m">12 min</span></li><li>Questions + game ❓<span class="m">13 min</span></li><li>Video 2 + worksheet<span class="m">10 min</span></li><li>didn’t + games ✅<span class="m">18 min</span></li><li>Final Topic Trivia 🎯<span class="m">10 min</span></li></ol></div>';
+else if(s.t==='video')h='<div class="inner"><div class="eyebrow">Story video</div><h2>'+s.title+'</h2><div class="he">'+s.he+'</div><div class="video-layout"><video class="video" controls playsinline preload="metadata"><source src="'+s.file+'" type="video/mp4"></video><figure class="worksheet-thumb"><img src="'+s.thumb+'" alt="Worksheet questions '+(s.n===1?'1–3':'4–6')+'"><figcaption>Worksheet questions '+(s.n===1?'1–3':'4–6')+'</figcaption></figure></div></div>';
+else if(s.t==='teach')h='<div class="inner"><div class="eyebrow">'+s.label+'</div><h1>'+s.title+'</h1><div class="he">'+s.he+'</div>'+s.rows.map(r=>'<div class="row">'+r.map(c=>'<div class="card q" style="width:auto;padding:12px 26px;font-size:clamp(22px,3.6vh,48px)">'+esc(c)+'</div>').join('')+'</div>').join('')+'<div class="sub" style="color:#8b671e">'+esc(s.note)+'</div></div>';
+else if(s.t==='seq'){const it=s.items[item];h='<div class="inner">'+gh+'<div class="eyebrow">Question '+(item+1)+' of '+s.items.length+'</div><div class="'+(s.big?'big':'q')+'">'+esc(it.q)+'</div>'+(it.o?optsHtml(it):'')+'<div class="ans">'+(shown?esc(it.a):'')+'</div><div class="row"><button class="btn gold" onclick="reveal()">'+(shown?'Hide':'Show answer')+'</button><button class="btn" onclick="nextItem()">Next ▶</button></div></div>'}
+else if(s.t==='board')h='<div class="inner">'+gh+'<div class="board">'+TOPICS.map(t=>'<div class="topic">'+t+'</div>').join('')+LV.map((p,l)=>TOPICS.map((t,ti)=>'<div class="cell '+(used[ti+'-'+l]?'used':'')+'" onclick="openQ('+ti+','+l+')">'+p+'</div>').join('')).join('')+'</div></div>';else{const r=[...teams].sort((a,b)=>b.s-a.s);h='<div class="inner"><div class="eyebrow">Final score</div><h1>🏆 '+esc(r[0].n)+'</h1>'+r.map((t,i)=>'<div class="card sub" style="padding:10px 30px">'+(i+1)+'. '+esc(t.n)+' — <b>'+t.s+'</b></div>').join('')+'<div class="sub">Great work!</div></div>'}
+stage.innerHTML='<div class="slide">'+h+'</div>';bar()}
+
+function bar(){const el=document.getElementById('bar');el.innerHTML=teams.map((t,i)=>'<div class="team '+(i===cur?'cur':'')+'"><button class="pm" onclick="pts('+i+',-10)">−</button><div class="tn" contenteditable spellcheck="false" onblur="teams['+i+'].n=this.textContent;save()" onclick="cur='+i+'">'+esc(t.n)+'</div><div class="ts">'+t.s+'</div><button class="pm" onclick="pts('+i+',10)">+</button></div>').join('')+'<div class="nav"><div id="timer" onclick="timer()">'+(tleft||'⏱')+'</div><div><button onclick="go(-1)">◀</button> <button onclick="go(1)">▶</button></div></div>'}
+function pts(i,d){teams[i].s=Math.max(0,teams[i].s+d);cur=i;save();render()}
+function reveal(){shown=!shown;render()}
+function nextItem(){const s=S[idx];if(!s.items){go(1);return}
+shown=false;if(item<s.items.length-1){item++;render()}
+else go(1)}
+function go(d){idx=Math.max(0,Math.min(S.length-1,idx+d));item=0;shown=false;render()}
+function timer(){clearInterval(tint);tleft=30;bar();tint=setInterval(()=>{tleft--;if(tleft<=0){clearInterval(tint);tleft=0}
+bar()}
+,1000)}
+function openQ(t,l){if(used[t+'-'+l])return;mq={t,l}
+;mshow=false;drawM()}
+function drawM(){const q=QS[mq.t][mq.l],m=document.getElementById('modal');m.classList.add('on');mbody.innerHTML='<div class="eyebrow">'+TOPICS[mq.t]+' · '+LV[mq.l]+' points</div><div class="q">'+esc(q[0])+'</div><div class="opts">'+q[1].map((o,i)=>'<div class="opt '+(mshow&&i===q[2]?'ok':'')+'"><b>'+('ABCD'[i])+'</b>'+esc(o)+'</div>').join('')+'</div><div class="row"><button class="btn gold" onclick="mshow=!mshow;drawM()">'+(mshow?'Hide':'Show answer')+'</button>'+teams.map((t,i)=>'<button class="btn" onclick="award('+i+')">+'+LV[mq.l]+' '+esc(t.n)+'</button>').join('')+'<button class="btn ghost" onclick="closeQ()">Nobody · close</button></div>'}
+function award(i){pts(i,LV[mq.l]);closeQ()}
+function closeQ(){used[mq.t+'-'+mq.l]=1;mq=null;modal.classList.remove('on');render()}
+document.addEventListener('keydown',e=>{if(e.target.isContentEditable)return;if(/^Digit[1-4]$/.test(e.code)){pts(+e.code[5]-1,e.shiftKey?-10:10);return}
+if(e.key==='ArrowRight'){if(!mq)nextItem()}
+else if(e.key==='ArrowLeft'){if(!mq)go(-1)}
+else if(e.key===' '||e.key==='Enter'){e.preventDefault();if(mq){mshow=!mshow;drawM()}
+else if(S[idx].t==='seq')reveal();else go(1)}
+else if(e.key==='Escape'&&mq)closeQ();
+else if(e.code==='KeyF'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+else if(e.code==='KeyT')timer();
+else if(e.code==='KeyR'&&confirm('Reset scores and board?')){teams.forEach(t=>t.s=0);used={}
+;save();idx=0;item=0;render()}
+}
+);render();
+</script></body></html>
